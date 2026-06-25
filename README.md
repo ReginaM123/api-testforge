@@ -1,13 +1,84 @@
-Name: api-testforge
+ API TestForge
 
-A lightweight API testing framework built with Python that enables developers and QA engineers to define API tests in YAML, execute them through a command-line interface, validate responses, and generate reports.
+A lightweight API testing framework for validating REST APIs using simple YAML files.
 
-Features:
+ Features
 
-1. REST API testing
-2. YAML-based test definitions
-3. Assertions for status codes and JSON values
-4. Environment variables
-5. HTML and JSON reports
-6. CI/CD friendly
-7. Extensible architecture
+* GET, POST, PUT, PATCH, DELETE support
+* YAML test definitions
+* JSON response assertions
+* Environment configuration
+* Report generation
+* CI/CD integration
+
+ Installation
+
+```bash
+git clone https://github.com/yourname/api-testforge.git
+cd api-testforge
+
+python -m venv venv
+
+ Linux/macOS
+source venv/bin/activate
+
+ Windows
+venv\Scripts\activate
+
+pip install -r requirements.txt
+```
+
+ Project Structure
+
+```text
+api-testforge/
+├── src/
+│   ├── client/
+│   ├── assertions/
+│   ├── runners/
+│   ├── reports/
+│   └── config/
+├── tests/
+├── reports/
+├── docs/
+├── examples/
+├── main.py
+└── requirements.txt
+```
+
+ Running Tests
+
+```bash
+python main.py run tests/users_api.yaml
+```
+
+ Example Test
+
+```yaml
+name: Get User
+
+request:
+  method: GET
+  url: https://jsonplaceholder.typicode.com/users/1
+
+assertions:
+  - status_code: 200
+```
+
+ Generate Report
+
+```bash
+python main.py run tests/users_api.yaml
+```
+
+Reports are automatically generated in the reports directory.
+
+ Future Roadmap
+
+* OAuth2 support
+* Swagger/OpenAPI validation
+* Parallel execution
+* Docker support
+* Web dashboard
+* AI-generated test cases
+
